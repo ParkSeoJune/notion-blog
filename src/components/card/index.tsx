@@ -10,12 +10,12 @@ const CardComponent = (data: Blog) => (
         className="object-cover rounded-xl"
         src={data.image || ""}
         width={270}
+        height={120}
       />
     </CardHeader>
     <CardBody className="flex flex-col gap-1 py-4 truncate">
       <p className="text-tiny uppercase font-bold">{data.name}</p>
       <small className="text-default-500">{data.date}</small>
-      {/* <h4 className="font-bold text-large">Frontend Radio</h4> */}
     </CardBody>
   </Card>
 );
