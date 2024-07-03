@@ -3,8 +3,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchBlogData } from "@/services/api/main";
 
-import type { BlogList } from "@/types/posts";
+import type { Blog } from "@/types/posts";
 import Layout from "@/components/layouts";
+import CardComponent from "@/components/card";
 
 export default function Home() {
   const { data: blogData } = useQuery({
@@ -14,11 +15,8 @@ export default function Home() {
 
   return (
     <Layout>
-      <div>
-        {blogData &&
-          blogData.map((data: BlogList) => (
-            <div key={data.id}>{data.name}</div>
-          ))}
+      <div className="flex gap-4">
+        {blogData && blogData.map((data: Blog) => <CardComponent {...data} />)}
       </div>
     </Layout>
   );

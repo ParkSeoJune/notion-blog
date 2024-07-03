@@ -44,14 +44,14 @@ export type Row = {
   url: string;
 };
 
-export type BlogList = {
+export type Blog = {
   id: string;
   name: string;
-  tag: {
+  tag?: {
     id: string;
     name: string;
   }[];
-  image: string;
+  image?: string;
   date: string;
   url: string;
 };
