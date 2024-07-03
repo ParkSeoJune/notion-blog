@@ -1,4 +1,4 @@
-import { RequestPostsParams } from "@/types/posts";
+import type { RequestPostsParams } from "@/types/posts";
 
 export const fetchBlogData = async ({
   count = 20,
@@ -10,7 +10,7 @@ export const fetchBlogData = async ({
     },
   });
 
-  const { data } = await res.json();
+  const data = await res.json();
 
   return data;
 };

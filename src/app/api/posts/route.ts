@@ -1,4 +1,5 @@
 import { retrieveDatabase } from "@/lib/notion";
+import type { Row } from "@/types/posts";
 
 export const dynamic = "auto";
 
@@ -17,12 +18,11 @@ export async function GET(req: Request) {
       tag: properties.tag.multi_select,
       url,
     };
-  });
+  }) as Row[];
 
   const reStructed = rows.map((row) => ({
     id: row.id,
     name: row.name.title.reduce(
-      //@ts-ignore
       (prev, cur) => `${prev}${cur.text.content}`,
       ""
     ),
@@ -30,17 +30,18 @@ export async function GET(req: Request) {
       id: tag.id,
       name: tag.name,
     })),
+    image: row.thumbnail?.files[0]?.file.url || "",
     date: row.date.date.start,
     url: row.url,
   }));
 
-  // if (category && typeof category === "string" && category !== "all") {
-  //   return Response.json(
-  //     reStructed.filter(({ tag }) => {
-  //       return tag.map(({ name }) => name).includes(category);
-  //     })
-  //   );
-  // }
+  if (category && typeof category === "string" && category !== "all") {
+    return Response.json(
+      reStructed.filter(({ tag }) => {
+        return tag.map(({ name }) => name).includes(category);
+      })
+    );
+  }
 
-  return Response.json(rows.slice(0, count != null ? +count : undefined));
+  return Response.json(reStructed.slice(0, count != null ? +count : undefined));
 }

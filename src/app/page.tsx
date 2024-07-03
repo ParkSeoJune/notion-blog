@@ -1,9 +1,11 @@
 "use client";
 
-import { fetchBlogData } from "@/services/api/main";
 import { useQuery } from "@tanstack/react-query";
+import { fetchBlogData } from "@/services/api/main";
 
-export default async function Home() {
+import type { BlogList } from "@/types/posts";
+
+export default function Home() {
   const { data: blogData } = useQuery({
     queryKey: ["blog"],
     queryFn: () => fetchBlogData(),
@@ -11,7 +13,8 @@ export default async function Home() {
 
   return (
     <div>
-      <h1>Blog</h1>
+      {blogData &&
+        blogData.map((data: BlogList) => <div key={data.id}>{data.name}</div>)}
     </div>
   );
 }
