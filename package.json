@@ -13,6 +13,7 @@
     "@notionhq/client": "^2.2.15",
     "@tanstack/react-query": "^5.49.2",
     "@tanstack/react-query-next-experimental": "^5.49.2",
+    "clsx": "^2.1.1",
     "dot-env": "^0.0.1",
     "framer-motion": "^11.2.12",
     "next": "14.2.4",
@@ -20,7 +21,8 @@
     "notion-types": "^6.16.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-notion-x": "^6.16.0"
+    "react-notion-x": "^6.16.0",
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
     "@types/node": "^20",
