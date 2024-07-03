@@ -3,6 +3,8 @@
 import { type ReactNode, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
+import { NextUIProvider } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 
 type Props = {
   children: ReactNode;
@@ -20,9 +22,13 @@ const Providers = ({ children }: Props) => {
       })
   );
 
+  const router = useRouter();
+
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration>
+      <NextUIProvider navigate={router.push}>
+        <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration>
+      </NextUIProvider>
     </QueryClientProvider>
   );
 };
