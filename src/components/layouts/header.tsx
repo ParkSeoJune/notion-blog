@@ -9,7 +9,7 @@ import {
 import Link from "next/link";
 
 const Header = () => (
-  <Navbar shouldHideOnScroll isBordered maxWidth="full" className="px-4">
+  <Navbar isBordered maxWidth="full" className="px-4">
     <NavbarBrand>
       <p className="font-bold">Notion Blog</p>
     </NavbarBrand>
