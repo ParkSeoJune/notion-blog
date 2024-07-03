@@ -1,25 +1,53 @@
 "use client";
 
-import Link from "next/link";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import { type ExtendedRecordMap } from "notion-types";
 import { NotionRenderer } from "react-notion-x";
 
+import Layout from "../layouts";
+
+import "@/components/notion/style.css";
+import "react-notion-x/src/styles.css";
+import "prismjs/themes/prism-tomorrow.css";
+import "katex/dist/katex.min.css";
+
+const Code = dynamic(
+  () => import("react-notion-x/build/third-party/code").then((m) => m.Code),
+  { ssr: false }
+);
+const Collection = dynamic(
+  () =>
+    import("react-notion-x/build/third-party/collection").then(
+      (m) => m.Collection
+    ),
+  {
+    ssr: false,
+  }
+);
+
 interface RendererProps {
-  recordMap: any; // 임의로 any
+  recordMap: ExtendedRecordMap;
   rootPageId: string;
 }
 
 export const Renderer = ({ recordMap, rootPageId }: RendererProps) => {
   return (
-    <div className="notion__container">
-      <Link href="/">뒤로가기</Link>
+    <Layout>
       <NotionRenderer
         recordMap={recordMap}
-        fullPage={true}
-        darkMode={false}
+        fullPage
+        darkMode
         rootPageId={rootPageId}
+        components={{
+          Collection,
+          Code,
+          nextImage: Image,
+        }}
+        disableHeader
         previewImages
       />
-    </div>
+    </Layout>
   );
 };
 

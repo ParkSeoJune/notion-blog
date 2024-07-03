@@ -1,4 +1,5 @@
 import { Client } from "@notionhq/client";
+import { NotionAPI } from "notion-client";
 
 const notionDatabase = process.env.NOTION_DATABASE_ID;
 const notionSecret = process.env.NOTION_SECRET;
@@ -16,4 +17,11 @@ export const retrieveDatabase = async () => {
     database_id: notionDatabase,
   });
   return query;
+};
+
+export const notionApi = new NotionAPI();
+
+export const getNotionPage = async (id: string) => {
+  const data = await notionApi.getPage(id);
+  return data;
 };
