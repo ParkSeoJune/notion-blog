@@ -25,6 +25,23 @@ export const retrieveDatabase = async (sortDate: string) => {
   return query;
 };
 
+export const filterDatabase = async (searchValue: string) => {
+  if (!notionDatabase || !notionSecret) {
+    throw new Error("Missing notion secret or DB ID");
+  }
+
+  const query = await notion.databases.query({
+    database_id: notionDatabase,
+    filter: {
+      property: "name",
+      rich_text: {
+        contains: searchValue,
+      },
+    },
+  });
+  return query;
+};
+
 export const notionApi = new NotionAPI();
 
 export const getNotionPage = async (id: string) => {

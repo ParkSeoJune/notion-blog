@@ -1,43 +1,78 @@
-import { SearchIcon } from "@/assets/icons/search";
+"use client";
+
 import {
-  Input,
+  Button,
+  Kbd,
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
+  useDisclosure,
 } from "@nextui-org/react";
 import Link from "next/link";
+import { useEffect } from "react";
 
-const Header = () => (
-  <Navbar isBordered maxWidth="full" className="px-4">
-    <NavbarBrand>
-      <Link href="/" className="font-bold">
-        Notion Blog
-      </Link>
-    </NavbarBrand>
-    <NavbarContent as="div" className="items-center" justify="center">
-      <Input
-        classNames={{
-          base: "max-w-full sm:min-w-[20rem] h-10",
-          mainWrapper: "h-full",
-          input: "text-small",
-          inputWrapper:
-            "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-        }}
-        placeholder="Type to search..."
-        size="sm"
-        startContent={<SearchIcon size={18} />}
-        type="search"
-      />
-    </NavbarContent>
-    <NavbarContent justify="end">
-      <NavbarItem>
-        <Link href="/" color="foreground">
-          Posts
-        </Link>
-      </NavbarItem>
-    </NavbarContent>
-  </Navbar>
-);
+import { SearchIcon } from "@/assets/icons/search";
+
+import SearchModal from "@/components/search-modal";
+
+const Header = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === "k") {
+        event.preventDefault();
+        onOpen();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  return (
+    <>
+      <Navbar isBordered maxWidth="full" className="px-4">
+        <NavbarBrand>
+          <Link href="/" className="font-bold">
+            Notion Blog
+          </Link>
+        </NavbarBrand>
+        <NavbarContent
+          as="div"
+          className="items-center"
+          justify="center"
+        ></NavbarContent>
+        <NavbarContent justify="end">
+          <NavbarItem className="flex items-center gap-5">
+            <Link href="/posts" color="foreground">
+              Posts
+            </Link>
+
+            <Button
+              className="justify-between max-w-full sm:min-w-[12rem] h-10"
+              size="sm"
+              startContent={<SearchIcon size={18} />}
+              endContent={
+                <Kbd keys={["command"]} slot="abbr">
+                  K
+                </Kbd>
+              }
+              onClick={onOpen}
+            >
+              Type to Search...
+            </Button>
+          </NavbarItem>
+        </NavbarContent>
+      </Navbar>
+
+      <SearchModal isOpen={isOpen} onClose={onClose} />
+    </>
+  );
+};
 
 export default Header;

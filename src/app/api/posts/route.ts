@@ -1,5 +1,6 @@
-import { retrieveDatabase } from "@/lib/notion";
-import type { Row } from "@/types/posts";
+import { filterDatabase, retrieveDatabase } from "@/lib/notion";
+import type { RequestSearchParam, Row } from "@/types/posts";
+import { NextRequest } from "next/server";
 
 export const dynamic = "auto";
 
@@ -45,4 +46,38 @@ export async function GET(req: Request) {
   }
 
   return Response.json(reStructed.slice(0, count != null ? +count : undefined));
+}
+
+export async function POST(req: NextRequest) {
+  const { searchValue } = (await req.json()) as RequestSearchParam;
+
+  const query = await filterDatabase(searchValue);
+
+  const rows = query.results.map((res) => {
+    //@ts-ignore
+    const { properties, url } = res;
+    return {
+      ...properties,
+      id: res.id,
+      tag: properties.tag.multi_select,
+      url,
+    };
+  }) as Row[];
+
+  const reStructed = rows.map((row) => ({
+    id: row.id,
+    name: row.name.title.reduce(
+      (prev, cur) => `${prev}${cur.text.content}`,
+      ""
+    ),
+    tag: row.tag.map((tag) => ({
+      id: tag.id,
+      name: tag.name,
+    })),
+    image: row.thumbnail?.files[0]?.file.url || "",
+    date: row.date.date.start,
+    url: row.url,
+  }));
+
+  return Response.json(reStructed);
 }

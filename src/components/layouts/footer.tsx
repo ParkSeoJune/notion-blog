@@ -16,6 +16,7 @@ const Footer = () => (
         </div>
 
         <Link
+          isExternal
           showAnchorIcon
           href="https://github.com/ParkSeoJune"
           size="sm"

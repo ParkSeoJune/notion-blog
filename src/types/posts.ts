@@ -6,6 +6,10 @@ export type RequestPostsParams = {
   sortDate?: "latest" | "earliest";
 };
 
+export type RequestSearchParam = {
+  searchValue: string;
+};
+
 export type Row = {
   date: {
     id: string;
