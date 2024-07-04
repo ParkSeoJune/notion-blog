@@ -16,7 +16,7 @@ const skeletonData = times(8, (index) => index + 1);
 export default function Home() {
   const { isLoading, data: blogData } = useQuery({
     queryKey: ["blog"],
-    queryFn: () => fetchBlogData(),
+    queryFn: () => fetchBlogData({ count: 8 }),
   });
 
   return (
@@ -38,7 +38,7 @@ export default function Home() {
         <div className="flex flex-col w-full gap-5">
           <div className="flex items-center justify-between">
             <p className="font-semibold text-lg">Recent Posts</p>
-            <Link href="#">Show All</Link>
+            <Link href="/post">Show All</Link>
           </div>
           <div className="grid grid-cols-4 gap-4">
             {isLoading &&

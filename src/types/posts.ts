@@ -2,6 +2,7 @@ import * as Notions from "notion-types";
 
 export type RequestPostsParams = {
   count?: number;
+  category?: string;
 };
 
 export type Row = {

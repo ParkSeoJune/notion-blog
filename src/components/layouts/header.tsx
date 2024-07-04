@@ -11,7 +11,9 @@ import Link from "next/link";
 const Header = () => (
   <Navbar isBordered maxWidth="full" className="px-4">
     <NavbarBrand>
-      <p className="font-bold">Notion Blog</p>
+      <Link href="/" className="font-bold">
+        Notion Blog
+      </Link>
     </NavbarBrand>
     <NavbarContent as="div" className="items-center" justify="center">
       <Input

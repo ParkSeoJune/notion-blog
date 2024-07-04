@@ -15,8 +15,8 @@ const CardComponent = (data: Blog) => (
           height={120}
         />
       </CardHeader>
-      <CardBody className="flex flex-col gap-1 py-4 truncate">
-        <p className="text-tiny uppercase font-bold">{data.name}</p>
+      <CardBody className="flex flex-col gap-1 py-4">
+        <p className="text-tiny uppercase font-bold truncate">{data.name}</p>
         <small className="text-default-500">{data.date}</small>
       </CardBody>
     </Card>

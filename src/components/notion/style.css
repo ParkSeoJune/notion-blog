@@ -1,7 +1,3 @@
 .notion-app {
   background-color: black !important;
 }
-
-.notion-app .notion-collection-row-body {
-  display: hidden !important;
-}

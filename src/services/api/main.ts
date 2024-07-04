@@ -1,9 +1,20 @@
+import qs from "qs";
+
 import type { RequestPostsParams } from "@/types/posts";
 
 export const fetchBlogData = async ({
-  count = 20,
+  count,
+  category,
 }: RequestPostsParams = {}) => {
-  const res = await fetch(`/api/posts?count=${count}`, {
+  const queryString = qs.stringify(
+    {
+      count,
+      category,
+    },
+    { skipNulls: true }
+  );
+
+  const res = await fetch(`/api/posts?${queryString}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

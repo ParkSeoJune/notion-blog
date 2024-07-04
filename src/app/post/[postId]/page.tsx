@@ -1,3 +1,4 @@
+import Layout from "@/components/layouts";
 import Renderer from "@/components/notion/renderer";
 import { getNotionPage } from "@/lib/notion";
 
@@ -11,9 +12,9 @@ const PostDetailPage = async ({ params }: PostDetailPageProps) => {
   const data = await getNotionPage(params.postId);
 
   return (
-    <main>
+    <Layout>
       <Renderer recordMap={data} rootPageId={params.postId} />
-    </main>
+    </Layout>
   );
 };
 
