@@ -35,7 +35,11 @@ const PostPage = () => {
 
   const { isLoading, data: blogData } = useQuery({
     queryKey: ["all-post", selectedTag, tab],
-    queryFn: () => fetchBlogData({ category: selectedTag.toLowerCase() }),
+    queryFn: () =>
+      fetchBlogData({
+        category: selectedTag.toLowerCase(),
+        sortDate: tab as "latest" | "earliest",
+      }),
   });
 
   const handleTagChange = (keys: Selection) => {

@@ -8,13 +8,19 @@ export const notion = new Client({
   auth: process.env.NOTION_SECRET,
 });
 
-export const retrieveDatabase = async () => {
+export const retrieveDatabase = async (sortDate: string) => {
   if (!notionDatabase || !notionSecret) {
     throw new Error("Missing notion secret or DB ID");
   }
 
   const query = await notion.databases.query({
     database_id: notionDatabase,
+    sorts: [
+      {
+        property: "date",
+        direction: sortDate === "latest" ? "descending" : "ascending",
+      },
+    ],
   });
   return query;
 };

@@ -5,11 +5,13 @@ import type { RequestPostsParams } from "@/types/posts";
 export const fetchBlogData = async ({
   count,
   category,
+  sortDate,
 }: RequestPostsParams = {}) => {
   const queryString = qs.stringify(
     {
       count,
       category,
+      sortDate,
     },
     { skipNulls: true }
   );

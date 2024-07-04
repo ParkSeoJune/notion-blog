@@ -7,7 +7,8 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const count = searchParams.get("count");
   const category = searchParams.get("category") ?? "all";
-  const query = await retrieveDatabase();
+  const sortDate = searchParams.get("sortDate") ?? "latest";
+  const query = await retrieveDatabase(sortDate);
 
   const rows = query.results.map((res) => {
     //@ts-ignore
