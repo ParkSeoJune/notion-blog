@@ -6,7 +6,7 @@ import Header from "./header";
 const Layout = ({ children }: { children: ReactNode }) => (
   <div className="flex flex-col min-h-screen">
     <Header />
-    <main className="flex-grow dark text-foreground bg-background">
+    <main className="flex-grow flex justify-center dark text-foreground bg-background">
       {children}
     </main>
     <Footer />

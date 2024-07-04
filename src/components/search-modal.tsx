@@ -26,7 +26,7 @@ const SearchModal = ({ isOpen, onClose }: Props) => {
   const [debouncedSearchValue, setDebouncedSearchValue] = useState("");
 
   const { isLoading, data: recentsBlogData } = useQuery({
-    queryKey: ["blog"],
+    queryKey: ["recent-blog"],
     queryFn: () => fetchBlogData({ count: 4 }),
   });
 

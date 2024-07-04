@@ -10,6 +10,7 @@ import CardComponent from "@/components/card";
 import CardSkeleton from "@/components/card/skeleton";
 
 import type { Blog } from "@/types/posts";
+import { cn } from "@/lib/utils";
 
 const skeletonData = times(8, (index) => index + 1);
 
@@ -21,28 +22,47 @@ export default function Home() {
 
   return (
     <Layout>
-      <section className="flex flex-col items-center gap-6 px-[8rem]">
-        <div className="flex justify-center items-center gap-20 w-full py-[4rem]">
+      <section
+        className={cn(
+          "flex flex-col items-center max-w-[1440px] gap-4 px-5",
+          "xs:gap-6 xs:px-8 sm:px-16 lg:px-[7rem]"
+        )}
+      >
+        <div
+          className={cn(
+            "flex flex-col justify-center items-center gap-3 w-full py-8",
+            "xs:flex-row xs:gap-[3rem]",
+            "sm:gap-20 sm:py-[4rem]"
+          )}
+        >
           <Image
             isBlurred
             width={240}
             src="https://nextui-docs-v2.vercel.app/images/album-cover.png"
             alt="NextUI Album Cover"
-            className="m-5"
+            className={cn("w-[12.5rem] p-2 m-5", "xs:w-[15rem] sm:p-0")}
           />
-          <div className="flex flex-col gap-3">
-            <p className="text-2xl font-bold">Blog</p>
-            <p>
-              안녕하세요! <br /> Frontend Developer <br /> 박서준입니다
+          <div className={cn("flex flex-col gap-2", "sm:gap-3")}>
+            <p className={cn("text-xl font-bold", "sm:text-2xl")}>Devlog</p>
+            <p className={cn("text-sm")}>
+              안녕하세요! <br /> Frontend Developer{" "}
+              <br className="hidden sm:block" /> 박서준입니다
             </p>
           </div>
         </div>
         <div className="flex flex-col w-full gap-5">
           <div className="flex items-center justify-between">
-            <p className="font-semibold text-lg">Recent Posts</p>
-            <Link href="/post">Show All</Link>
+            <p className="font-semibold text-md sm:text-lg">Recent Posts</p>
+            <Link href="/post" className="text-md sm:text-lg">
+              Show All
+            </Link>
           </div>
-          <div className="grid grid-cols-4 gap-4">
+          <div
+            className={cn(
+              "grid grid-cols-1 gap-4",
+              "xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
+            )}
+          >
             {isLoading &&
               !blogData &&
               skeletonData.map((index) => <CardSkeleton key={index} />)}

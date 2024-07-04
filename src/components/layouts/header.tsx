@@ -15,6 +15,7 @@ import { useEffect } from "react";
 import { SearchIcon } from "@/assets/icons/search";
 
 import SearchModal from "@/components/search-modal";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -36,7 +37,7 @@ const Header = () => {
 
   return (
     <>
-      <Navbar isBordered maxWidth="full" className="px-4">
+      <Navbar isBordered maxWidth="full" className="h-14 xs:h-16 sm:px-8">
         <NavbarBrand>
           <Link href="/" className="font-bold">
             Notion Blog
@@ -54,7 +55,10 @@ const Header = () => {
             </Link>
 
             <Button
-              className="justify-between max-w-full sm:min-w-[12rem] h-10"
+              className={cn(
+                "hidden justify-between max-w-full xs:min-w-[12rem] h-10",
+                "xs:flex"
+              )}
               size="sm"
               startContent={<SearchIcon size={18} />}
               endContent={
@@ -66,6 +70,15 @@ const Header = () => {
             >
               Type to Search...
             </Button>
+
+            <button
+              type="button"
+              aria-label="search"
+              onClick={onOpen}
+              className="xs:hidden"
+            >
+              <SearchIcon size={18} />
+            </button>
           </NavbarItem>
         </NavbarContent>
       </Navbar>

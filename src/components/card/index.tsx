@@ -2,16 +2,16 @@ import { Card, CardHeader, CardBody, Image, Chip } from "@nextui-org/react";
 import Link from "next/link";
 
 import type { Blog } from "@/types/posts";
+import { cn } from "@/lib/utils";
 
 const CardComponent = (data: Blog) => (
   <Link href={`/post/${data.id}`}>
-    <Card isPressable isHoverable className="w-[294px]">
-      <CardHeader className="pb-0 pt-4">
+    <Card isPressable isHoverable className="w-full">
+      <CardHeader className="pb-0 pt-3">
         <Image
           alt="Card background"
-          className="object-cover rounded-xl"
+          className={cn("min-w-full object-cover rounded-xl")}
           src={data.image || ""}
-          width={270}
           height={120}
         />
       </CardHeader>
@@ -31,7 +31,7 @@ const CardComponent = (data: Blog) => (
             ))}
         </div>
         <div className="flex flex-col gap-1">
-          <p className="text-tiny uppercase font-bold truncate">{data.name}</p>
+          <p className="text-sm uppercase font-bold truncate">{data.name}</p>
           <small className="text-default-500">{data.date}</small>
         </div>
       </CardBody>
