@@ -32,7 +32,9 @@ export default function Home() {
           />
           <div className="flex flex-col gap-3">
             <p className="text-2xl font-bold">Blog</p>
-            <p>안녕하세요!</p>
+            <p>
+              안녕하세요! <br /> Frontend Developer <br /> 박서준입니다
+            </p>
           </div>
         </div>
         <div className="flex flex-col w-full gap-5">
