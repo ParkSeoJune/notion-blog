@@ -25,16 +25,19 @@ const Collection = dynamic(
 );
 
 interface RendererProps {
+  title: string;
   recordMap: ExtendedRecordMap;
   rootPageId: string;
 }
 
-export const Renderer = ({ recordMap, rootPageId }: RendererProps) => {
+export const NotionPage = ({ title, recordMap, rootPageId }: RendererProps) => {
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex flex-col items-center w-full max-w-[1200px] mx-auto mt-5 py-4 gap-2">
+      <h1 className="text-3xl px-4">
+        <b>{title}</b>
+      </h1>
       <NotionRenderer
         recordMap={recordMap}
-        fullPage
         darkMode
         rootPageId={rootPageId}
         components={{
@@ -49,4 +52,4 @@ export const Renderer = ({ recordMap, rootPageId }: RendererProps) => {
   );
 };
 
-export default Renderer;
+export default NotionPage;

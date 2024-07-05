@@ -1,5 +1,7 @@
+import { getPageTitle } from "notion-utils";
+
 import Layout from "@/components/layouts";
-import Renderer from "@/components/notion/renderer";
+import NotionPage from "@/components/notion/notion-page";
 import { getNotionPage } from "@/lib/notion";
 
 type PostDetailPageProps = {
@@ -9,11 +11,16 @@ type PostDetailPageProps = {
 };
 
 const PostDetailPage = async ({ params }: PostDetailPageProps) => {
-  const data = await getNotionPage(params.postId);
+  const recordMap = await getNotionPage(params.postId);
+  const title = await getPageTitle(recordMap);
 
   return (
     <Layout>
-      <Renderer recordMap={data} rootPageId={params.postId} />
+      <NotionPage
+        title={title}
+        recordMap={recordMap}
+        rootPageId={params.postId}
+      />
     </Layout>
   );
 };

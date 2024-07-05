@@ -1,3 +1,8 @@
 .notion-app {
   background-color: black !important;
 }
+
+.notion .notion-page {
+  padding-left: 0;
+  padding-right: 0;
+}
