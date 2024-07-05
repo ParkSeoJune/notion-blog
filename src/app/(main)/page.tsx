@@ -24,8 +24,8 @@ export default function Home() {
     <Layout>
       <section
         className={cn(
-          "flex flex-col items-center max-w-[1440px] gap-4 px-5",
-          "xs:gap-6 xs:px-8 sm:px-16 lg:px-[7rem]"
+          "flex flex-col items-center w-screen max-w-[1440px] gap-4 px-5",
+          "xs:gap-6 xs:px-8 sm:px-16 lg:px-[5rem]"
         )}
       >
         <div
@@ -59,7 +59,7 @@ export default function Home() {
           </div>
           <div
             className={cn(
-              "grid grid-cols-1 gap-4",
+              "grid grid-cols-1 w-full gap-4",
               "xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
             )}
           >

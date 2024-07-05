@@ -11,7 +11,7 @@ const CardComponent = (data: Blog) => (
         <Image
           alt="Card background"
           className={cn("min-w-full object-cover rounded-xl")}
-          src={data.image || ""}
+          src={data.image}
           height={120}
         />
       </CardHeader>

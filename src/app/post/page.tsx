@@ -21,6 +21,7 @@ import CardComponent from "@/components/card";
 import CardSkeleton from "@/components/card/skeleton";
 
 import type { Blog } from "@/types/posts";
+import { cn } from "@/lib/utils";
 
 const skeletonData = times(8, (index) => index + 1);
 
@@ -52,11 +53,28 @@ const PostPage = () => {
 
   return (
     <Layout>
-      <section className="flex flex-col items-center px-[8rem]">
-        <div className="flex flex-col w-full gap-5 pt-8">
-          <div className="flex items-center justify-between">
-            <p className="font-semibold text-lg">All Posts</p>
-            <div className="flex gap-4">
+      <section
+        className={cn(
+          "flex flex-col items-center w-screen max-w-[1440px] px-5",
+          "xs:gap-6 xs:px-8 sm:px-16 lg:px-[5rem]"
+        )}
+      >
+        <div className={cn("flex flex-col w-full gap-3 pt-8", "xs:gap-5")}>
+          <div
+            className={cn(
+              "flex flex-col gap-5",
+              "xs:flex-row xs:justify-between xs:items-center xs:gap-0"
+            )}
+          >
+            <p className="pl-1 font-semibold text-lg text-gray-200">
+              All Posts
+            </p>
+            <div
+              className={cn(
+                "flex justify-between w-full",
+                "xs:w-fit xs:gap-4 xs:justify-normal"
+              )}
+            >
               <Tabs
                 size="sm"
                 radius="sm"
@@ -93,7 +111,12 @@ const PostPage = () => {
               </Dropdown>
             </div>
           </div>
-          <div className="grid grid-cols-4 gap-4">
+          <div
+            className={cn(
+              "grid grid-cols-1 w-full gap-4",
+              "xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
+            )}
+          >
             {isLoading &&
               !blogData &&
               skeletonData.map((index) => <CardSkeleton key={index} />)}
