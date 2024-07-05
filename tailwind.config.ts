@@ -25,6 +25,6 @@ const config: Config = {
     },
   },
   darkMode: "class",
-  plugins: [nextui({ defaultTheme: "dark" })],
+  plugins: [require("tailwind-scrollbar"), nextui({ defaultTheme: "dark" })],
 };
 export default config;

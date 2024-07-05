@@ -14,7 +14,7 @@ import {
 } from "@nextui-org/react";
 import { useQuery } from "@tanstack/react-query";
 import { type ChangeEvent, useEffect, useState } from "react";
-import { useDebounce } from "react-use";
+import { useDebounce, useMedia } from "react-use";
 
 type Props = {
   isOpen: boolean;
@@ -24,6 +24,8 @@ type Props = {
 const SearchModal = ({ isOpen, onClose }: Props) => {
   const [searchValue, setSearchValue] = useState("");
   const [debouncedSearchValue, setDebouncedSearchValue] = useState("");
+
+  const isMobileSize = useMedia("(max-width:768px)", false);
 
   const { isLoading, data: recentsBlogData } = useQuery({
     queryKey: ["recent-blog"],
@@ -60,11 +62,13 @@ const SearchModal = ({ isOpen, onClose }: Props) => {
 
   return (
     <Modal
+      placement={isMobileSize ? "top-center" : "center"}
       size="md"
       shouldBlockScroll
       hideCloseButton
       isOpen={isOpen}
       onClose={onClose}
+      className="mt-5 sm:mt-0"
     >
       <ModalContent>
         {(onClose) => (
@@ -78,9 +82,15 @@ const SearchModal = ({ isOpen, onClose }: Props) => {
                 value={searchValue}
                 onChange={handleChange}
                 onClear={handleClear}
+                classNames={isMobileSize ? { input: ["ml-1 text-medium"] } : {}}
               />
             </ModalHeader>
-            <ModalBody className="px-3 pt-0 pb-3 gap-4">
+            <ModalBody
+              className={cn(
+                "h-full justify-between px-3 pt-0 pb-3 gap-4",
+                "xs:h-fit xs:justify-normal"
+              )}
+            >
               {(isLoading || isSearching) && (
                 <div className="flex justify-center items-center w-full h-[12rem]">
                   <Spinner />
@@ -124,14 +134,19 @@ const SearchModal = ({ isOpen, onClose }: Props) => {
                 searchedBlogData.length > 0 && (
                   <div className="flex flex-col gap-1">
                     <p className="text-xs text-gray-500">Results</p>
-                    <div className="flex flex-col gap-1">
+                    <div
+                      className={cn(
+                        "flex flex-col max-h-[16.125rem] gap-1 overflow-y-scroll",
+                        "scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-500"
+                      )}
+                    >
                       {searchedBlogData.map((data: Blog) => (
                         <Link href={`/post/${data.id}`}>
                           <Button
                             variant="light"
                             radius="sm"
                             className={cn(
-                              "flex-col items-start min-h-fit gap-0 p-2",
+                              "flex-col items-start w-full min-h-fit gap-0 p-2",
                               "bg-[#18181B] text-gray-200"
                             )}
                           >

@@ -50,7 +50,7 @@ const Header = () => {
         ></NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="flex items-center gap-5">
-            <Link href="/posts" color="foreground">
+            <Link href="/post" color="foreground">
               Posts
             </Link>
 

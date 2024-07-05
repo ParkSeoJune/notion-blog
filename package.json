@@ -27,7 +27,8 @@
     "react-dom": "^18",
     "react-notion-x": "^6.16.0",
     "react-use": "^17.5.0",
-    "tailwind-merge": "^2.3.0"
+    "tailwind-merge": "^2.3.0",
+    "tailwind-scrollbar": "^3.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",
