@@ -1,7 +1,5 @@
-import { SearchIcon } from "@/assets/icons/search";
-import { cn } from "@/lib/utils";
-import { fetchBlogData, searchBlogData } from "@/services/api/main";
-import { Blog } from "@/types/posts";
+import { type ChangeEvent, useEffect, useState } from "react";
+import { useDebounce, useMedia } from "react-use";
 import {
   Button,
   Input,
@@ -13,8 +11,12 @@ import {
   Spinner,
 } from "@nextui-org/react";
 import { useQuery } from "@tanstack/react-query";
-import { type ChangeEvent, useEffect, useState } from "react";
-import { useDebounce, useMedia } from "react-use";
+
+import { SearchIcon } from "@/assets/icons/search";
+import { cn } from "@/lib/utils";
+import { fetchBlogData, searchBlogData } from "@/services/api/main";
+
+import { type Blog } from "@/types/posts";
 
 type Props = {
   isOpen: boolean;
@@ -111,7 +113,11 @@ const SearchModal = ({ isOpen, onClose }: Props) => {
                     <p className="text-xs text-gray-500">Recents Posts</p>
                     <div className="flex flex-col gap-1">
                       {recentsBlogData.map((data: Blog) => (
-                        <Link href={`/post/${data.id}`} className="w-full">
+                        <Link
+                          key={data.id}
+                          href={`/post/${data.id}`}
+                          className="w-full"
+                        >
                           <Button
                             variant="light"
                             radius="sm"
@@ -141,7 +147,7 @@ const SearchModal = ({ isOpen, onClose }: Props) => {
                       )}
                     >
                       {searchedBlogData.map((data: Blog) => (
-                        <Link href={`/post/${data.id}`}>
+                        <Link key={data.id} href={`/post/${data.id}`}>
                           <Button
                             variant="light"
                             radius="sm"

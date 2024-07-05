@@ -1,8 +1,9 @@
 import { Card, CardHeader, CardBody, Image, Chip } from "@nextui-org/react";
 import Link from "next/link";
 
-import type { Blog } from "@/types/posts";
 import { cn } from "@/lib/utils";
+
+import type { Blog } from "@/types/posts";
 
 const CardComponent = (data: Blog) => (
   <Link href={`/post/${data.id}`}>

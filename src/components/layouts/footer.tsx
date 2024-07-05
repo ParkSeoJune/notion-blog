@@ -1,5 +1,6 @@
-import { cn } from "@/lib/utils";
 import { Link } from "@nextui-org/react";
+
+import { cn } from "@/lib/utils";
 
 const Footer = () => (
   <footer

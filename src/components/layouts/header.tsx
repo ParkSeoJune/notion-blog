@@ -33,7 +33,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [onOpen]);
 
   return (
     <>

@@ -19,9 +19,9 @@ import { fetchBlogData } from "@/services/api/main";
 import Layout from "@/components/layouts";
 import CardComponent from "@/components/card";
 import CardSkeleton from "@/components/card/skeleton";
+import { cn } from "@/lib/utils";
 
 import type { Blog } from "@/types/posts";
-import { cn } from "@/lib/utils";
 
 const skeletonData = times(8, (index) => index + 1);
 

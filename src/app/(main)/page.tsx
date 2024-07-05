@@ -68,7 +68,9 @@ export default function Home() {
               skeletonData.map((index) => <CardSkeleton key={index} />)}
             {!isLoading &&
               blogData &&
-              blogData.map((data: Blog) => <CardComponent {...data} />)}
+              blogData.map((data: Blog) => (
+                <CardComponent key={data.id} {...data} />
+              ))}
           </div>
         </div>
       </section>

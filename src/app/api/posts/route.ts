@@ -1,6 +1,8 @@
-import { filterDatabase, retrieveDatabase } from "@/lib/notion";
-import type { RequestSearchParam, Row } from "@/types/posts";
 import { NextRequest } from "next/server";
+
+import { filterDatabase, retrieveDatabase } from "@/lib/notion";
+
+import type { RequestSearchParam, Row } from "@/types/posts";
 
 export const dynamic = "auto";
 
