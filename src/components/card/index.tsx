@@ -7,7 +7,12 @@ import { cn } from "@/lib/utils";
 const CardComponent = (data: Blog) => (
   <Link href={`/post/${data.id}`}>
     <Card isPressable isHoverable className="w-full">
-      <CardHeader className="pb-0 pt-3">
+      <CardHeader
+        className={cn(
+          "pb-0 min-h-[8.875rem] pt-3",
+          "xs:min-h-[9rem] sm:min-h-[7.625rem] lg:min-h-[8.125rem]"
+        )}
+      >
         <Image
           alt="Card background"
           className={cn("min-w-full object-cover rounded-xl")}
