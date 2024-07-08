@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import { filterDatabase, retrieveDatabase } from "@/lib/notion";
 
@@ -6,7 +6,7 @@ import type { RequestSearchParam, Row } from "@/types/posts";
 
 export const dynamic = "auto";
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const count = searchParams.get("count");
   const category = searchParams.get("category") ?? "all";
@@ -40,14 +40,16 @@ export async function GET(req: Request) {
   }));
 
   if (category && typeof category === "string" && category !== "all") {
-    return Response.json(
+    return NextResponse.json(
       reStructed.filter(({ tag }) => {
         return tag.map(({ name }) => name).includes(category);
       })
     );
   }
 
-  return Response.json(reStructed.slice(0, count != null ? +count : undefined));
+  return NextResponse.json(
+    reStructed.slice(0, count != null ? +count : undefined)
+  );
 }
 
 export async function POST(req: NextRequest) {
@@ -81,5 +83,5 @@ export async function POST(req: NextRequest) {
     url: row.url,
   }));
 
-  return Response.json(reStructed);
+  return NextResponse.json(reStructed);
 }
