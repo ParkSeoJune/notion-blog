@@ -20,7 +20,7 @@ export const fetchBlogData = async ({
     { skipNulls: true }
   );
 
-  const res = await fetch(`http://localhost:3000/api/posts?${queryString}`, {
+  const res = await fetch(`/api/posts?${queryString}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

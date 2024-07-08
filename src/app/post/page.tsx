@@ -34,14 +34,14 @@ const PostPage = () => {
     [tag]
   );
 
-  const { isLoading, data: blogData } = useQuery({
-    queryKey: ["all-post", selectedTag, tab],
-    queryFn: () =>
-      fetchBlogData({
-        category: selectedTag.toLowerCase(),
-        sortDate: tab as "latest" | "earliest",
-      }),
-  });
+  // const { isLoading, data: blogData } = useQuery({
+  //   queryKey: ["all-post", selectedTag, tab],
+  //   queryFn: () =>
+  //     fetchBlogData({
+  //       category: selectedTag.toLowerCase(),
+  //       sortDate: tab as "latest" | "earliest",
+  //     }),
+  // });
 
   const handleTagChange = (keys: Selection) => {
     setTag(keys);
@@ -117,14 +117,14 @@ const PostPage = () => {
               "xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
             )}
           >
-            {isLoading &&
+            {/* {isLoading &&
               !blogData &&
               skeletonData.map((index) => <CardSkeleton key={index} />)}
             {!isLoading &&
               blogData &&
               blogData.map((data: Blog) => (
                 <CardComponent key={data.id} {...data} />
-              ))}
+              ))} */}
           </div>
         </div>
       </section>
