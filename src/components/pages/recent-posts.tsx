@@ -11,17 +11,12 @@ import { cn } from "@/lib/utils";
 
 import type { Blog } from "@/types/posts";
 
-type Props = {
-  initialData: Blog[];
-};
-
 const skeletonData = times(8, (index) => index + 1);
 
-const RecentPosts = ({ initialData }: Props) => {
+const RecentPosts = () => {
   const { isLoading, data: blogData } = useQuery({
     queryKey: ["blog"],
     queryFn: () => fetchBlogData({ count: 8 }),
-    initialData: initialData,
   });
 
   return (

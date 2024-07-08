@@ -20,15 +20,12 @@ export const fetchBlogData = async ({
     { skipNulls: true }
   );
 
-  const res = await fetch(
-    `https://notion-blog-git-develop-parkseojunes-projects.vercel.app/api/posts?${queryString}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const res = await fetch(`/api/posts?${queryString}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
   const data = (await res.json()) as Blog[];
 
