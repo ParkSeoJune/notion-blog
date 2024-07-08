@@ -18,11 +18,11 @@ type Props = {
 const skeletonData = times(8, (index) => index + 1);
 
 const RecentPosts = ({ initialData }: Props) => {
-  // const { isLoading, data: blogData } = useQuery({
-  //   queryKey: ["blog"],
-  //   queryFn: () => fetchBlogData({ count: 8 }),
-  //   initialData: initialData,
-  // });
+  const { isLoading, data: blogData } = useQuery({
+    queryKey: ["blog"],
+    queryFn: () => fetchBlogData({ count: 8 }),
+    initialData: initialData,
+  });
 
   return (
     <section
@@ -66,14 +66,14 @@ const RecentPosts = ({ initialData }: Props) => {
             "xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
           )}
         >
-          {/* {isLoading &&
+          {isLoading &&
             !blogData &&
             skeletonData.map((index) => <CardSkeleton key={index} />)}
           {!isLoading &&
             blogData &&
             blogData.map((data: Blog) => (
               <CardComponent key={data.id} {...data} />
-            ))} */}
+            ))}
         </div>
       </div>
     </section>
