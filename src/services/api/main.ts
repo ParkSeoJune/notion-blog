@@ -21,7 +21,7 @@ export const fetchBlogData = async ({
   );
 
   const res = await fetch(
-    `https://notion-blog-parkseojunes-projects.vercel.app/api/posts?${queryString}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts?${queryString}`,
     {
       method: "GET",
       headers: {
