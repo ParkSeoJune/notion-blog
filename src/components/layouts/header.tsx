@@ -40,7 +40,7 @@ const Header = () => {
       <Navbar isBordered maxWidth="full" className="h-14 xs:h-16 sm:px-8">
         <NavbarBrand>
           <Link href="/" className="font-bold">
-            Notion Blog
+            Jhin Devlog
           </Link>
         </NavbarBrand>
         <NavbarContent
