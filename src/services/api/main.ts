@@ -21,7 +21,7 @@ export const fetchBlogData = async ({
   );
 
   const res = await fetch(
-    `https://notion-blog-flame-eta.vercel.app/api/posts?${queryString}`,
+    `https://notion-blog-git-develop-parkseojunes-projects.vercel.app/api/posts?${queryString}`,
     {
       method: "GET",
       headers: {

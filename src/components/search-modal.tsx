@@ -29,10 +29,10 @@ const SearchModal = ({ isOpen, onClose }: Props) => {
 
   const isMobileSize = useMedia("(max-width:768px)", false);
 
-  const { isLoading, data: recentsBlogData } = useQuery({
-    queryKey: ["recent-blog"],
-    queryFn: () => fetchBlogData({ count: 4 }),
-  });
+  // const { isLoading, data: recentsBlogData } = useQuery({
+  //   queryKey: ["recent-blog"],
+  //   queryFn: () => fetchBlogData({ count: 4 }),
+  // });
 
   const { isLoading: isSearching, data: searchedBlogData } = useQuery({
     queryKey: ["search-blog", debouncedSearchValue],
@@ -93,7 +93,7 @@ const SearchModal = ({ isOpen, onClose }: Props) => {
                 "xs:h-fit xs:justify-normal"
               )}
             >
-              {(isLoading || isSearching) && (
+              {/* {(isLoading || isSearching) && (
                 <div className="flex justify-center items-center w-full h-[12rem]">
                   <Spinner />
                 </div>
@@ -133,7 +133,7 @@ const SearchModal = ({ isOpen, onClose }: Props) => {
                       ))}
                     </div>
                   </div>
-                )}
+                )} */}
 
               {!isSearching &&
                 searchedBlogData &&
