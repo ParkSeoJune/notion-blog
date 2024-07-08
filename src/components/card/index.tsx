@@ -1,5 +1,6 @@
-import { Card, CardHeader, CardBody, Image, Chip } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Chip } from "@nextui-org/react";
 import Link from "next/link";
+import NextImage from "next/image";
 
 import { cn } from "@/lib/utils";
 
@@ -14,12 +15,14 @@ const CardComponent = (data: Blog) => (
           "xs:min-h-[9rem] sm:min-h-[7.625rem] lg:min-h-[8.125rem]"
         )}
       >
-        <Image
-          alt="Card background"
-          className={cn("min-w-full object-cover rounded-xl")}
-          src={data.image}
-          height={120}
-        />
+        <div className="relative w-full h-[9.5rem]">
+          <NextImage
+            alt="Card background"
+            className={cn("object-cover rounded-xl")}
+            src={data.image || ""}
+            fill
+          />
+        </div>
       </CardHeader>
       <CardBody className="pb-4 gap-2">
         <div className="flex gap-1">

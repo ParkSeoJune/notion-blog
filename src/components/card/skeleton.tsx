@@ -1,9 +1,9 @@
 import { Card, Skeleton } from "@nextui-org/react";
 
 const CardSkeleton = () => (
-  <Card className="w-full h-[14.625rem] space-y-5 p-4" radius="lg">
+  <Card className="w-full h-[16.625rem] space-y-5 p-4" radius="lg">
     <Skeleton className="rounded-lg">
-      <div className="h-[9rem] rounded-lg bg-default-300" />
+      <div className="h-[9.5rem] rounded-lg bg-default-300" />
     </Skeleton>
     <div className="space-y-3">
       <Skeleton className="w-1/5 rounded-lg">
