@@ -54,6 +54,10 @@ const Header = () => {
               Posts
             </Link>
 
+            <Link href="/resume" color="foreground">
+              Resume
+            </Link>
+
             <Button
               className={cn(
                 "hidden justify-between max-w-full xs:min-w-[12rem] h-10",
