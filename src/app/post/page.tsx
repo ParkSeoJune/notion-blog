@@ -16,7 +16,8 @@ export const metadata: Metadata = {
 const PostPage = () => {
   return (
     <Layout>
-      <AllPosts />
+      {/* <AllPosts /> */}
+      <div>h</div>
     </Layout>
   );
 };
