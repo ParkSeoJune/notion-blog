@@ -23,14 +23,12 @@ export type Row = {
   tag: { id: string; name: string; color: Notions.Color }[];
   thumbnail?: {
     id: string;
-    type: Notions.PropertyType;
-    files: [
+    type: "rich_text";
+    rich_text: [
       {
-        name: string;
-        type: "file";
-        file: {
+        text: {
+          content: string;
           url: string;
-          expiry_time: string;
         };
       }
     ];

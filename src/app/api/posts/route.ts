@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
       id: tag.id,
       name: tag.name,
     })),
-    image: row.thumbnail?.files[0]?.file.url || "",
+    image: row.thumbnail?.rich_text[0]?.text.content || "",
     date: row.date.date.start,
     url: row.url,
   }));
@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
       id: tag.id,
       name: tag.name,
     })),
-    image: row.thumbnail?.files[0]?.file.url || "",
+    image: row.thumbnail?.rich_text[0]?.text.content || "",
     date: row.date.date.start,
     url: row.url,
   }));
