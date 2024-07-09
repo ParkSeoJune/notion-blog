@@ -14,18 +14,17 @@ export const metadata: Metadata = {
   },
 };
 
-// async function fetchRecentPostsData() {
-//   const data = await fetchBlogData({ count: 8 });
-//   return data;
-// }
+async function fetchRecentPostsData() {
+  const data = await fetchBlogData({ count: 8 });
+  return data;
+}
 
 export default async function Home() {
-  // const data = await fetchRecentPostsData();
+  const data = await fetchRecentPostsData();
 
   return (
     <Layout>
-      {/* <RecentPosts initialData={data} /> */}
-      <div>d</div>
+      <RecentPosts initialData={data} />
     </Layout>
   );
 }
