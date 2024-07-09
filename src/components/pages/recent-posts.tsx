@@ -3,6 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Image, Link } from "@nextui-org/react";
 import times from "lodash/times";
+import mainImage from "@/assets/main-image.jpeg";
 
 import { fetchBlogData } from "@/services/api/main";
 import CardComponent from "@/components/card";
@@ -41,8 +42,8 @@ const RecentPosts = ({ initialData }: Props) => {
         <Image
           isBlurred
           width={240}
-          src="https://nextui-docs-v2.vercel.app/images/album-cover.png"
-          alt="NextUI Album Cover"
+          src="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F6324545%2Fattach%2Fa1a2e40b390045868b6552fbb2803812"
+          alt="main-image"
           className={cn("w-[12.5rem] p-2 m-5", "xs:w-[15rem] sm:p-0")}
         />
         <div className={cn("flex flex-col gap-2", "sm:gap-3")}>
