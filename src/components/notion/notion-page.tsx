@@ -5,7 +5,8 @@ import Image from "next/image";
 import { type ExtendedRecordMap } from "notion-types";
 import { NotionRenderer } from "react-notion-x";
 
-import GoogleAd from "@/components/google-ad";
+// import GoogleAd from "@/components/google-ad";
+import Giscus from "@/components/giscus";
 
 import "@/components/notion/style.css";
 import "react-notion-x/src/styles.css";
@@ -51,6 +52,7 @@ export const NotionPage = ({ title, recordMap, rootPageId }: RendererProps) => {
         disableHeader
         previewImages
       />
+      <Giscus />
     </div>
   );
 };
