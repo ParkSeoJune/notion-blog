@@ -3,11 +3,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { Image, Link } from "@nextui-org/react";
 import times from "lodash/times";
-import mainImage from "@/assets/main-image.jpeg";
 
 import { fetchBlogData } from "@/services/api/main";
 import CardComponent from "@/components/card";
 import CardSkeleton from "@/components/card/skeleton";
+import VisitorCount from "@/components/visitor-count";
 import { cn } from "@/lib/utils";
 
 import type { Blog } from "@/types/posts";
@@ -49,9 +49,9 @@ const RecentPosts = ({ initialData }: Props) => {
         <div className={cn("flex flex-col gap-2", "sm:gap-3")}>
           <p className={cn("text-xl font-bold", "sm:text-2xl")}>Devlog</p>
           <p className={cn("text-sm")}>
-            안녕하세요! <br /> Frontend Developer{" "}
-            <br className="hidden sm:block" /> 박서준입니다
+            안녕하세요! <br /> Frontend Developer 박서준입니다
           </p>
+          <VisitorCount />
         </div>
       </div>
       <div className="flex flex-col w-full gap-5">
