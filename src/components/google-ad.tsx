@@ -10,7 +10,15 @@ declare global {
 
 const GoogleAd = () => {
   useEffect(() => {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    const checkAdSenseScript = () => {
+      if (typeof window.adsbygoogle !== "undefined") {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } else {
+        console.error("AdSense script not loaded");
+      }
+    };
+
+    checkAdSenseScript();
   }, []);
 
   return (
