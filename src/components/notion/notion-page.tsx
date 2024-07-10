@@ -5,6 +5,8 @@ import Image from "next/image";
 import { type ExtendedRecordMap } from "notion-types";
 import { NotionRenderer } from "react-notion-x";
 
+import GoogleAd from "@/components/google-ad";
+
 import "@/components/notion/style.css";
 import "react-notion-x/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css";
@@ -36,6 +38,7 @@ export const NotionPage = ({ title, recordMap, rootPageId }: RendererProps) => {
       <h1 className="text-3xl px-4">
         <b>{title}</b>
       </h1>
+      <GoogleAd />
       <NotionRenderer
         recordMap={recordMap}
         darkMode
