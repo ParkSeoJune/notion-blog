@@ -38,7 +38,7 @@ export const NotionPage = ({ title, recordMap, rootPageId }: RendererProps) => {
       <h1 className="text-3xl px-4">
         <b>{title}</b>
       </h1>
-      <GoogleAd />
+      {/* <GoogleAd /> */}
       <NotionRenderer
         recordMap={recordMap}
         darkMode
