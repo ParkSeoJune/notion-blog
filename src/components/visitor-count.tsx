@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { db } from "@/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
+import { format } from "date-fns";
 
 const VisitorCount = () => {
   const [todayCount, setTodayCount] = useState(0);
@@ -28,7 +29,7 @@ const VisitorCount = () => {
 
   useEffect(() => {
     const fetchVisitorData = async () => {
-      const today = new Date().toISOString().split("T")[0];
+      const todayDate = format(new Date(), "yyyy-MM-dd");
       const visitorDocs = await getDocs(collection(db, "visitors"));
 
       let todayCount = 0;
@@ -36,7 +37,7 @@ const VisitorCount = () => {
 
       visitorDocs.forEach((doc) => {
         totalCount += doc.data().count;
-        if (doc.id === today) {
+        if (doc.id === todayDate) {
           todayCount = doc.data().count;
         }
       });

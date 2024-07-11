@@ -8,13 +8,15 @@ import {
 } from "firebase/firestore";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { format } from "date-fns";
 
 export async function GET() {
   const cookieStore = cookies();
   const visitCookie = cookieStore.get("visited");
 
-  const today = new Date().toISOString().split("T")[0];
-  const visitorRef = doc(db, "visitors", today);
+  const todayDate = format(new Date(), "yyyy-MM-dd");
+
+  const visitorRef = doc(db, "visitors", todayDate);
 
   if (!visitCookie) {
     cookieStore.set("visited", "true", {

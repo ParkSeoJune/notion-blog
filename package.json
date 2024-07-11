@@ -15,6 +15,7 @@
     "@tanstack/react-query-next-experimental": "^5.49.2",
     "@types/qs": "^6.9.15",
     "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
     "dot-env": "^0.0.1",
     "firebase": "^10.12.3",
     "framer-motion": "^11.2.12",
