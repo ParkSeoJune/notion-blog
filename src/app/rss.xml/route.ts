@@ -31,16 +31,18 @@ const genereateRssXml = async () => {
           image: post.image,
           description,
           content: html,
+          categories: post.tag?.map((data) => data.name),
         };
       })
     );
 
-    convertedPosts.forEach(({ title, url, date, description }) => {
+    convertedPosts.forEach(({ title, url, date, description, categories }) => {
       feed.item({
         title,
         description: `${description.slice(0, 100)}...`,
         url,
         date,
+        categories,
         custom_elements: [
           {
             "content:encoded": description,
