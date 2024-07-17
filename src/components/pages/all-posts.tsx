@@ -22,13 +22,9 @@ import { cn } from "@/lib/utils";
 
 import type { Blog } from "@/types/posts";
 
-type Props = {
-  initialData: Blog[];
-};
-
 const skeletonData = times(8, (index) => index + 1);
 
-const AllPosts = ({ initialData }: Props) => {
+const AllPosts = () => {
   const [tag, setTag] = useState<Selection>(new Set(["all"]));
   const [tab, setTab] = useState<Key>("latest");
 
@@ -44,7 +40,6 @@ const AllPosts = ({ initialData }: Props) => {
         category: selectedTag.toLowerCase(),
         sortDate: tab as "latest" | "earliest",
       }),
-    initialData,
     placeholderData: keepPreviousData,
   });
 

@@ -2,7 +2,6 @@ import { type Metadata } from "next";
 
 import Layout from "@/components/layouts";
 import AllPosts from "@/components/pages/all-posts";
-import { fetchBlogData } from "@/services/api/main";
 
 export const metadata: Metadata = {
   title: "Posts",
@@ -14,17 +13,10 @@ export const metadata: Metadata = {
   },
 };
 
-async function fetchRecentPostsData() {
-  const data = await fetchBlogData();
-  return data;
-}
-
 const PostPage = async () => {
-  const data = await fetchRecentPostsData();
-
   return (
     <Layout>
-      <AllPosts initialData={data} />
+      <AllPosts />
     </Layout>
   );
 };
