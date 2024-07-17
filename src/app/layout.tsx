@@ -5,6 +5,7 @@ import Providers from "@/components/providers";
 
 import "@/styles/global.css";
 import GoogleAnalytics from "@/components/google-analytics";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -57,6 +58,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <GoogleAnalytics />
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );
