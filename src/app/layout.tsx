@@ -37,6 +37,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          href="/rss.xml"
+          title="Jhin DevLog Feed RSS"
+        />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7110063599433500"
