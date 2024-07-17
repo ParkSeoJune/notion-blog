@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import {
   Button,
   Dropdown,
@@ -22,9 +22,13 @@ import { cn } from "@/lib/utils";
 
 import type { Blog } from "@/types/posts";
 
+type Props = {
+  initialData: Blog[];
+};
+
 const skeletonData = times(8, (index) => index + 1);
 
-const AllPosts = () => {
+const AllPosts = ({ initialData }: Props) => {
   const [tag, setTag] = useState<Selection>(new Set(["all"]));
   const [tab, setTab] = useState<Key>("latest");
 
@@ -40,6 +44,8 @@ const AllPosts = () => {
         category: selectedTag.toLowerCase(),
         sortDate: tab as "latest" | "earliest",
       }),
+    initialData,
+    placeholderData: keepPreviousData,
   });
 
   const handleTagChange = (keys: Selection) => {
@@ -103,6 +109,7 @@ const AllPosts = () => {
               >
                 <DropdownItem key="all">All</DropdownItem>
                 <DropdownItem key="til">TIL</DropdownItem>
+                <DropdownItem key="dev">DEV</DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </div>
