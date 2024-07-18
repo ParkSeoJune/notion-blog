@@ -13,4 +13,4 @@ yarn dev
 
 Go to site:
 
-[jhin devlog](https://notion-blog-parkseojunes-projects.vercel.app/)
+[jhin devlog](https://www.jhintechblog.xyz)
