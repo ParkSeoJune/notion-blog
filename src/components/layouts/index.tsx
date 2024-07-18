@@ -4,7 +4,9 @@ import Footer from "./footer";
 import Header from "./header";
 
 async function updateVisitorCount() {
-  const res = await fetch("/api/update-visitor-count");
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/update-visitor-count`
+  );
   if (res.ok) {
     await res.json();
   } else {
