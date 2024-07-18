@@ -10,9 +10,7 @@ import { Analytics } from "@vercel/analytics/next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    "https://notion-blog-parkseojunes-projects.vercel.app/"
-  ),
+  metadataBase: new URL("https://www.jhintechblog.xyz/"),
   title: {
     default: "Jhin DevLog",
     template: "%s | Jhin DevLog",
@@ -23,7 +21,7 @@ export const metadata: Metadata = {
       default: "Jhin DevLog",
       template: "%s | Jhin DevLog",
     },
-    url: "https://notion-blog-parkseojunes-projects.vercel.app/",
+    url: "https://www.jhintechblog.xyz/",
     siteName: "Jhin DevLog",
     type: "website",
     images: [],

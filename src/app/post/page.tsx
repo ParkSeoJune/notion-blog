@@ -6,7 +6,7 @@ import AllPosts from "@/components/pages/all-posts";
 export const metadata: Metadata = {
   title: "Posts",
   alternates: {
-    canonical: "https://notion-blog-parkseojunes-projects.vercel.app/post",
+    canonical: "https://www.jhintechblog.xyz/post",
   },
   openGraph: {
     title: "Posts",

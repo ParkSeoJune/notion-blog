@@ -7,7 +7,7 @@ import { fetchBlogData } from "@/services/api/main";
 export const metadata: Metadata = {
   title: "Home",
   alternates: {
-    canonical: "https://notion-blog-parkseojunes-projects.vercel.app/",
+    canonical: "https://www.jhintechblog.xyz/",
   },
   openGraph: {
     title: "Home",

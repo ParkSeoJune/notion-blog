@@ -5,7 +5,7 @@ import { fetchBlogData } from "@/services/api/main";
 import type { Blog } from "@/types/posts";
 import removeMarkdown from "markdown-to-text";
 
-const baseUrl = "https://notion-blog-parkseojunes-projects.vercel.app";
+const baseUrl = "https://www.jhintechblog.xyz/";
 
 const genereateRssXml = async () => {
   try {
