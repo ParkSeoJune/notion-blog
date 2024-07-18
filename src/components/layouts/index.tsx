@@ -1,21 +1,27 @@
-import { type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 import Footer from "./footer";
 import Header from "./header";
 
-async function updateVisitorCount() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/update-visitor-count`
-  );
-  if (res.ok) {
-    await res.json();
-  } else {
-    console.error("Error updating visitor count:", res.statusText);
-  }
-}
+const Layout = ({ children }: { children: ReactNode }) => {
+  const hasUpdatedVisitorCount = useRef(false);
 
-const Layout = async ({ children }: { children: ReactNode }) => {
-  await updateVisitorCount();
+  useEffect(() => {
+    if (hasUpdatedVisitorCount.current) return;
+
+    const updateVisitorCount = async () => {
+      const res = await fetch("/api/update-visitor-count");
+      if (res.ok) {
+        await res.json();
+
+        hasUpdatedVisitorCount.current = true;
+      } else {
+        console.error("Error updating visitor count:", res.statusText);
+      }
+    };
+
+    updateVisitorCount();
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
