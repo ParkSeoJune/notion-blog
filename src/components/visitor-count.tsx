@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { db } from "@/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import { format } from "date-fns";
@@ -8,24 +8,6 @@ import { format } from "date-fns";
 const VisitorCount = () => {
   const [todayCount, setTodayCount] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
-  const hasUpdatedVisitorCount = useRef(false);
-
-  useEffect(() => {
-    if (hasUpdatedVisitorCount.current) return;
-
-    const updateVisitorCount = async () => {
-      const res = await fetch("/api/update-visitor-count");
-      if (res.ok) {
-        await res.json();
-
-        hasUpdatedVisitorCount.current = true;
-      } else {
-        console.error("Error updating visitor count:", res.statusText);
-      }
-    };
-
-    updateVisitorCount();
-  }, []);
 
   useEffect(() => {
     const fetchVisitorData = async () => {
