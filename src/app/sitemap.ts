@@ -2,7 +2,7 @@ import { fetchBlogData } from "@/services/api/main";
 import type { Blog } from "@/types/posts";
 
 export default async function sitemap() {
-  const baseUrl = "https://www.jhintechblog.xyz/";
+  const baseUrl = "https://www.jhintechblog.xyz";
   const posts = await fetchBlogData();
   const postSitemaps = posts.map((post: Blog) => {
     return {
