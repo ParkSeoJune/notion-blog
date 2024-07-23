@@ -20,7 +20,7 @@ export async function generateMetadata({
   return {
     title: `${title}`,
     alternates: {
-      canonical: `https://www.jhintechblog.xyz/post${pageId}`,
+      canonical: `https://www.jhintechblog.xyz/post/${pageId}`,
     },
     openGraph: {
       title: `${title}`,

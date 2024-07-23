@@ -24,7 +24,11 @@ export const metadata: Metadata = {
     url: "https://www.jhintechblog.xyz/",
     siteName: "Jhin DevLog",
     type: "website",
-    images: [],
+    images: [
+      {
+        url: "https://www.jhintechblog.xyz/assets/image.png",
+      },
+    ],
   },
 };
 
