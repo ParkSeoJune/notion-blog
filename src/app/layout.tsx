@@ -24,11 +24,7 @@ export const metadata: Metadata = {
     url: "https://www.jhintechblog.xyz/",
     siteName: "Jhin DevLog",
     type: "website",
-    images: [
-      {
-        url: "https://www.jhintechblog.xyz/assets/image.png",
-      },
-    ],
+    images: [],
   },
 };
 
@@ -49,7 +45,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta
           name="google-site-verification"
-          content="apuOLE59ujPD4XVuGxeGUD2LgaD6lD80K7FECjWx5GA"
+          content="Qh9WpNZDaP8YxgPMulT5nLW_ocf19gITi0Qm16mnPCk"
         />
         <script
           async
