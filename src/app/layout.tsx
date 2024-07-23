@@ -34,9 +34,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
@@ -46,16 +46,16 @@ export default function RootLayout({
           href="/rss.xml"
           title="Jhin DevLog Feed RSS"
         />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7110063599433500"
-          crossOrigin="anonymous"
-        ></script>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta
           name="google-site-verification"
           content="apuOLE59ujPD4XVuGxeGUD2LgaD6lD80K7FECjWx5GA"
         />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7110063599433500"
+          crossOrigin="anonymous"
+        ></script>
       </head>
       <body className={inter.className}>
         <GoogleAnalytics />
