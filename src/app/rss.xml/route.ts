@@ -1,11 +1,11 @@
 import RSS from "rss";
-import NotionPageToHtml from "notion-page-to-html";
+// import NotionPageToHtml from "notion-page-to-html";
 
 import { fetchBlogData } from "@/services/api/main";
 import type { Blog } from "@/types/posts";
-import removeMarkdown from "markdown-to-text";
+// import removeMarkdown from "markdown-to-text";
 
-const baseUrl = "https://www.jhintechblog.xyz/";
+const baseUrl = "https://www.jhintechblog.xyz";
 
 const genereateRssXml = async () => {
   try {
@@ -19,18 +19,18 @@ const genereateRssXml = async () => {
 
     const convertedPosts = await Promise.all(
       posts.map(async (post: Blog) => {
-        const { html } = await NotionPageToHtml.convert(post.url, {
-          bodyContentOnly: true,
-        });
-        const description = removeMarkdown(html);
+        // const { html } = await NotionPageToHtml.convert(post.url, {
+        //   bodyContentOnly: true,
+        // });
+        // const description = removeMarkdown(html);
 
         return {
           title: post.name,
           url: `${baseUrl}/post/${post.id}`,
           date: post.date,
           image: post.image,
-          description,
-          content: html,
+          description: "",
+          // content: html,
           categories: post.tag?.map((data) => data.name),
         };
       })
