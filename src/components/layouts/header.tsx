@@ -54,9 +54,9 @@ const Header = () => {
               Posts
             </Link>
 
-            <Link href="/resume" color="foreground">
+            {/* <Link href="/resume" color="foreground">
               Resume
-            </Link>
+            </Link> */}
 
             <Button
               className={cn(
